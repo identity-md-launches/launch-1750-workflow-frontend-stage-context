@@ -1,0 +1,75 @@
+{
+  "chainId": 11155111,
+  "poolKey": {
+    "fee": 12500,
+    "hooks": "0xa0602cb30558d5dd17415b6268a4feea3a0ca000",
+    "currency0": "0x0000000000000000000000000000000000000000",
+    "currency1": "0x24ec630cc5ad762445f8e3cede8956f5b8999b36",
+    "tickSpacing": 60
+  },
+  "repoUrl": "https://github.com/identity-md-launches/launch-1746-loomcollection-loomfactory",
+  "version": 1,
+  "launchId": "5a236d96-2876-4ac5-b874-ee97565f17f6",
+  "manifest": {
+    "kind": "evm_project",
+    "pool": {
+      "fee": 12500,
+      "tickSpacing": 60,
+      "initialPrice": "79228162514264337593543950336",
+      "pairedCurrency": "0x0000000000000000000000000000000000000000"
+    },
+    "notes": "LoomCollection is the locked ERC-721 implementation for collections created through LoomFactory. Its immutable PLATFORM and RESERVE recipients, and LoomFactory's immutable PLATFORM recipient and creation pauser, all resolve to the launch owner through $owner. LoomFactory creates and initializes collection clones atomically after launch; the caller of createCollection owns the new collection. Launch deployment requires no initialization calls. The pool pairs LOOM with native ETH at 1.25%; the deployment service derives its opening price from the launch policy.",
+    "token": {
+      "name": "Loom",
+      "symbol": "LOOM",
+      "contract": "LaunchToken",
+      "decimals": 18
+    },
+    "contracts": [
+      {
+        "contract": "LoomCollection",
+        "constructorArgs": [
+          "$owner",
+          "$owner"
+        ]
+      },
+      {
+        "contract": "LoomFactory",
+        "constructorArgs": [
+          "$contract:LoomCollection",
+          "$owner",
+          "$owner"
+        ]
+      }
+    ]
+  },
+  "contracts": [
+    {
+      "name": "LaunchToken",
+      "txHash": "0xdcdc10e381a99bcfd6710b49f28b120e4aa7f6f890a838ea57ec6b2b17df826d",
+      "abiHash": "38880b8e56d42ce900f744a7908c7139632a49f1c3f33385c64ceaed29d37bee",
+      "address": "0x24ec630cc5ad762445f8e3cede8956f5b8999b36",
+      "blockNumber": 11913967,
+      "creationCodeHash": "ff25e035297e68d803ae464010501af2546311b155bea099cf54efecb3977d6f"
+    },
+    {
+      "name": "LoomCollection",
+      "txHash": "0xdcdc10e381a99bcfd6710b49f28b120e4aa7f6f890a838ea57ec6b2b17df826d",
+      "abiHash": "40738688b8a0d4a145a06f7f0b7a3fae3788eda4f4439fb8eb7acf5f2296d7e9",
+      "address": "0x671bfb38b46cde43ed1d52444d74c8a382a3cf51",
+      "blockNumber": 11913967,
+      "creationCodeHash": "30dd49f6bf7a8bf2a77cac49d13c0c02dfcf64a395eaf110d6a0ecc9c9db3877"
+    },
+    {
+      "name": "LoomFactory",
+      "txHash": "0xdcdc10e381a99bcfd6710b49f28b120e4aa7f6f890a838ea57ec6b2b17df826d",
+      "abiHash": "fd34d57c2f6f1dd642720ecc28a4eae62899fc78b099a9f4899b12d99f41c4a7",
+      "address": "0xbe4d0c08c60bb459e8bf19a4524eb6dcbd87f50f",
+      "blockNumber": 11913967,
+      "creationCodeHash": "c84fd632f24ba194901396a81c956c5ffc792fab57d988691c54ec2b62dc4abb"
+    }
+  ],
+  "sourceCommit": "586668b09578a70919bf1f57fe7224dcfa9bee69",
+  "abiInstructions": "Build ABIs from this exact source commit; compare canonicalKeccak(abi) with abiHash. Verify deployed code on the stated chain before enabling transactions.",
+  "attestationHash": "9a2610c0dbbad95f0ec65f4f9db3743701a084d131b369d4d44efc9a1f929e1a"
+}

@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-14",
+  "allChangedPathsWithinBudget": true,
+  "changedFileCountBeforeThisReport": 82,
+  "changedFileBytesBeforeThisReport": 2178732,
+  "submodules": 0,
+  "dependencyAndCacheFilesInSubmission": 0,
+  "unnecessaryArchivesInSubmission": 0,
+  "protectedFilesChanged": false,
+  "exportFiles": 16,
+  "exportBytes": 878392,
+  "bundleLimitBytes": 8388608,
+  "measuredCompleteGitBundleBytes": 1696218,
+  "finalReportSafetyAllowanceBytes": 65536,
+  "conservativeBundleUpperBoundBytes": 1761754,
+  "withinBundleLimit": true,
+  "measurementNote": "Bundle includes baseline history and all delivery files at measurement. The extra 64 KiB covers this final report update; temporary Git clone and bundle stay in test/scratch and are not delivered."
+}

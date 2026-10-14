@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-10-14T15:37:56.366Z",
+  "publicRpc": "https://ethereum-sepolia-rpc.publicnode.com",
+  "chainId": 11155111,
+  "blockNumber": "11914198",
+  "contracts": [
+    {
+      "name": "LaunchToken",
+      "address": "0x24ec630cc5ad762445f8e3cede8956f5b8999b36",
+      "byteLength": 1503,
+      "runtimeKeccak": "0xb4a00e67e7ce24bf06af1b1ca3ccc0c1817e0ce58e6a20dbb60c63a3f91e3d5d",
+      "abiHash": "38880b8e56d42ce900f744a7908c7139632a49f1c3f33385c64ceaed29d37bee"
+    },
+    {
+      "name": "LoomCollection",
+      "address": "0x671bfb38b46cde43ed1d52444d74c8a382a3cf51",
+      "byteLength": 11087,
+      "runtimeKeccak": "0x1c47a0ba5e1766980b7290cefeba4b7d3c3e20664fdb4b639417a710d7c1ca52",
+      "abiHash": "40738688b8a0d4a145a06f7f0b7a3fae3788eda4f4439fb8eb7acf5f2296d7e9"
+    },
+    {
+      "name": "LoomFactory",
+      "address": "0xbe4d0c08c60bb459e8bf19a4524eb6dcbd87f50f",
+      "byteLength": 2527,
+      "runtimeKeccak": "0xa9f8f1bb6e1cef74c28e7dae1e8513083b4de4ed6ea1e8f3245f5d05efaacbf4",
+      "abiHash": "fd34d57c2f6f1dd642720ecc28a4eae62899fc78b099a9f4899b12d99f41c4a7"
+    }
+  ],
+  "factory": {
+    "CREATE_FEE": "2000000000000000",
+    "paused": false,
+    "collectionCount": "0",
+    "implementation": "0x671Bfb38b46cdE43eD1D52444D74C8A382a3Cf51",
+    "pauser": "0x7efaa4Fe311657aC972B6f1cE05a2EE460805fDf",
+    "PLATFORM": "0x7efaa4Fe311657aC972B6f1cE05a2EE460805fDf"
+  },
+  "collectionImplementation": {
+    "PLATFORM_FEE": "500000000000000",
+    "CREATOR_FEE_SHARE": "200000000000000",
+    "PLATFORM_FEE_SHARE": "200000000000000",
+    "RESERVE_FEE_SHARE": "100000000000000",
+    "PLATFORM": "0x7efaa4Fe311657aC972B6f1cE05a2EE460805fDf",
+    "RESERVE": "0x7efaa4Fe311657aC972B6f1cE05a2EE460805fDf"
+  },
+  "pool": {
+    "id": "0xa2a106e22e7870a9f8c34d976a972772e4f1817513799acbd7fe18efaddf488e",
+    "liquidity": "0",
+    "sqrtPriceX96": "560227709747861399187319382274582",
+    "tick": 177284,
+    "protocolFee": 0,
+    "lpFee": 12500
+  },
+  "attempts": [],
+  "broadcasts": 0,
+  "token": {
+    "name": "Loom",
+    "symbol": "LOOM",
+    "decimals": 18,
+    "totalSupply": "1000000000000000000000000000"
+  }
+}

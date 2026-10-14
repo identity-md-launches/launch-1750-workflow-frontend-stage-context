@@ -1,0 +1,4 @@
+/* System fonts keep the static export self-contained and avoid remote font requests. */
+@font-face { font-family: 'Loom Sans'; src: local('Arial'); font-style: normal; font-weight: 400; }
+@font-face { font-family: 'Loom Sans'; src: local('Arial Bold'); font-style: normal; font-weight: 600 700; }
+@font-face { font-family: 'Loom Serif'; src: local('Georgia Bold Italic'); font-style: italic; font-weight: 700; }

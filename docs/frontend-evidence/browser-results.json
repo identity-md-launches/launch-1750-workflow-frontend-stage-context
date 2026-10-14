@@ -1,0 +1,179 @@
+{
+  "startedAt": "2026-10-14T15:34:00.701Z",
+  "testMode": "Mocked wallet and RPC; no signing keys or real broadcasts",
+  "browsers": [
+    {
+      "browser": "chromium",
+      "available": true,
+      "version": "156.0.8078.4"
+    },
+    {
+      "browser": "webkit",
+      "available": true,
+      "version": "27.2"
+    }
+  ],
+  "checks": [
+    {
+      "name": "chromium: static subpath, real manifest, disconnected state, mobile first action",
+      "passed": true,
+      "durationMs": 214
+    },
+    {
+      "name": "chromium: EIP-6963 discovery, rejection, keyboard close and focus restoration",
+      "passed": true,
+      "durationMs": 84
+    },
+    {
+      "name": "chromium: unknown chain add then switch, exact network parameters",
+      "passed": true,
+      "durationMs": 134
+    },
+    {
+      "name": "chromium: create validation, exact factory payment and event navigation",
+      "passed": true,
+      "durationMs": 848
+    },
+    {
+      "name": "chromium: mint first screen, exact quantity fee, pending lock, confirmation and tokens",
+      "passed": true,
+      "durationMs": 618
+    },
+    {
+      "name": "chromium: wallet cap, simulation revert, user rejection and recovery",
+      "passed": true,
+      "durationMs": 799
+    },
+    {
+      "name": "chromium: wrong-chain action gate and switch recovery",
+      "passed": true,
+      "durationMs": 26
+    },
+    {
+      "name": "chromium: owner metadata, pause/resume, reserve fee and irreversible confirmation",
+      "passed": true,
+      "durationMs": 1628
+    },
+    {
+      "name": "chromium: current ownership after transfer and wallet token shelf",
+      "passed": true,
+      "durationMs": 405
+    },
+    {
+      "name": "chromium: buy quote, slippage minimum and native router encoding",
+      "passed": true,
+      "durationMs": 540
+    },
+    {
+      "name": "chromium: sell approvals separated, exact amount, allowance refresh and zero ETH value",
+      "passed": true,
+      "durationMs": 2033
+    },
+    {
+      "name": "chromium: quote expiry, slippage validation and insufficient funds",
+      "passed": true,
+      "durationMs": 1876
+    },
+    {
+      "name": "chromium: responsive widths, long values, accessibility and script errors",
+      "passed": true,
+      "durationMs": 503
+    },
+    {
+      "name": "chromium: mobile wallet deep links, marks and Coinbase Smart Wallet",
+      "passed": true,
+      "durationMs": 125
+    },
+    {
+      "name": "chromium: RPC failure/retry, missing code guard and zero active liquidity",
+      "passed": true,
+      "durationMs": 2951
+    },
+    {
+      "name": "chromium: ABI tamper fails closed before wallet or contract actions",
+      "passed": true,
+      "durationMs": 66
+    },
+    {
+      "name": "webkit: static subpath, real manifest, disconnected state, mobile first action",
+      "passed": true,
+      "durationMs": 249
+    },
+    {
+      "name": "webkit: EIP-6963 discovery, rejection, keyboard close and focus restoration",
+      "passed": true,
+      "durationMs": 399
+    },
+    {
+      "name": "webkit: unknown chain add then switch, exact network parameters",
+      "passed": true,
+      "durationMs": 133
+    },
+    {
+      "name": "webkit: create validation, exact factory payment and event navigation",
+      "passed": true,
+      "durationMs": 843
+    },
+    {
+      "name": "webkit: mint first screen, exact quantity fee, pending lock, confirmation and tokens",
+      "passed": true,
+      "durationMs": 620
+    },
+    {
+      "name": "webkit: wallet cap, simulation revert, user rejection and recovery",
+      "passed": true,
+      "durationMs": 819
+    },
+    {
+      "name": "webkit: wrong-chain action gate and switch recovery",
+      "passed": true,
+      "durationMs": 33
+    },
+    {
+      "name": "webkit: owner metadata, pause/resume, reserve fee and irreversible confirmation",
+      "passed": true,
+      "durationMs": 1640
+    },
+    {
+      "name": "webkit: current ownership after transfer and wallet token shelf",
+      "passed": true,
+      "durationMs": 472
+    },
+    {
+      "name": "webkit: buy quote, slippage minimum and native router encoding",
+      "passed": true,
+      "durationMs": 538
+    },
+    {
+      "name": "webkit: sell approvals separated, exact amount, allowance refresh and zero ETH value",
+      "passed": true,
+      "durationMs": 2079
+    },
+    {
+      "name": "webkit: quote expiry, slippage validation and insufficient funds",
+      "passed": true,
+      "durationMs": 1893
+    },
+    {
+      "name": "webkit: responsive widths, long values, accessibility and script errors",
+      "passed": true,
+      "durationMs": 589
+    },
+    {
+      "name": "webkit: mobile wallet deep links, marks and Coinbase Smart Wallet",
+      "passed": true,
+      "durationMs": 277
+    },
+    {
+      "name": "webkit: RPC failure/retry, missing code guard and zero active liquidity",
+      "passed": true,
+      "durationMs": 2982
+    },
+    {
+      "name": "webkit: ABI tamper fails closed before wallet or contract actions",
+      "passed": true,
+      "durationMs": 63
+    }
+  ],
+  "finishedAt": "2026-10-14T15:34:27.730Z"
+}
