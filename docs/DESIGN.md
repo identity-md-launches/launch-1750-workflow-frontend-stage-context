@@ -78,9 +78,9 @@ Inputs, buttons and notices use 6px corners; cards and principal panels use 8px.
 | `Modal` | `web/src/ui.tsx` | Native dialog, Escape/backdrop/close, initial focus and return to trigger; mobile bottom sheet |
 | `AddressView` | `web/src/ui.tsx` | Full checksummed address, wrapping, explorer and copy |
 | `.button`, `.primary`, `.text-button` | `web/src/styles.css` | Neutral/primary/inline variants; hover, press, focus and native disabled states |
-| `Wallet` | `web/src/Wallet.tsx` | Disconnected picker, per-row pending, rejection, connected identity/disconnect, wrong-chain switch |
+| `Wallet` | `web/src/Wallet.tsx` | Disconnected picker, per-row pending, rejection, connected identity/disconnect, wrong-chain switch; reconnect waits for a resolved connector and provider failures offer reconnection |
 | `CollectionCard` | `web/src/App.tsx` | Real collection name, supply, all-in mint price, pause/sold-out state and mint-page link |
-| `TransactionStatus` | `web/src/transactions.tsx` | Preparing, signing, confirming, refreshing, unknown, success and error; explorer/recheck recovery |
+| `TransactionStatus` | `web/src/transactions.tsx` | Preparing, signing, confirming, refreshing, unknown, success and error; explorer/recheck recovery; receipt-check button never submits its containing form |
 | `Tokens` | `web/src/Tokens.tsx` | Fixed-block paged ownership scan, loading/error/empty/owned states, metadata links and token transfer |
 | `OwnerAction` | `web/src/OwnerPanel.tsx` | Per-setting control, eligibility/role/freeze gates, separate transaction state and irreversible confirmation |
 

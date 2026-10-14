@@ -1,18 +1,20 @@
 {
   "checkedAt": "2026-10-14",
   "allChangedPathsWithinBudget": true,
-  "changedFileCountBeforeThisReport": 82,
-  "changedFileBytesBeforeThisReport": 2178732,
+  "pathBudgetException": ".imd-responses.json is explicitly required by the revision brief",
+  "changedFileCountBeforeThisReport": 32,
+  "changedFileBytesBeforeThisReport": 1853049,
   "submodules": 0,
   "dependencyAndCacheFilesInSubmission": 0,
   "unnecessaryArchivesInSubmission": 0,
   "protectedFilesChanged": false,
+  "ignoreFilesChanged": false,
   "exportFiles": 16,
-  "exportBytes": 878392,
+  "exportBytes": 878566,
   "bundleLimitBytes": 8388608,
-  "measuredCompleteGitBundleBytes": 1696218,
+  "measuredCompleteGitBundleBytes": 2643861,
   "finalReportSafetyAllowanceBytes": 65536,
-  "conservativeBundleUpperBoundBytes": 1761754,
+  "conservativeBundleUpperBoundBytes": 2709397,
   "withinBundleLimit": true,
-  "measurementNote": "Bundle includes baseline history and all delivery files at measurement. The extra 64 KiB covers this final report update; temporary Git clone and bundle stay in test/scratch and are not delivered."
+  "measurementNote": "Complete Git bundle includes baseline history, revision source, tests, export, evidence and reviewer responses. A temporary clone/snapshot commit and bundle live only in test/scratch; root Git metadata is read-only. The additional 64 KiB covers this report update."
 }

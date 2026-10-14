@@ -38,20 +38,20 @@
       "sha256": "da2e9f0ed0a7cb8f800c5e0b947a08cb5d6224aa8bc5c2671f4f989be5b88f81"
     },
     {
-      "path": "assets/ccip-CykNLHWf.js",
-      "sha256": "6255e4736b961c111ee3a0b2fb87cef33ee55b68332624c6bce1d5b9322ee3cf"
+      "path": "assets/ccip-TLBv4r_a.js",
+      "sha256": "c6984056c903d117d9530f9d6f39752499f5ac742da170c9ba979d429f7ce365"
     },
     {
-      "path": "assets/dist-B7ZAs_EF.js",
-      "sha256": "fef3a523e245f176676accf8bd63905b1d2ce3d1c46bb3d3450cb8d732ccf2cb"
+      "path": "assets/dist-DJwQtGcG.js",
+      "sha256": "7cbabc9c325bf2f258bb6aaaa40f19c1d4183f939a0f7d47a2e2dbcfa323252a"
+    },
+    {
+      "path": "assets/index-DEqFqUqs.js",
+      "sha256": "7e97d794f47275968c68cc597d42cebec5e51b83b9ebc2e5b3ad07f3deb1075c"
     },
     {
       "path": "assets/index-DjdE_8-T.css",
       "sha256": "fb4bba73e3ffcadef14f4455f124ed1b15e36d26298e285b1e3e06422b294525"
-    },
-    {
-      "path": "assets/index-hlFs6sCM.js",
-      "sha256": "a7f37c73a3ac90c17c0c855dfc20878ab360d2902d36663008515902e2b23586"
     },
     {
       "path": "favicon.svg",
@@ -59,7 +59,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "79ad1e499105d7737cf03dce09ba41fadc330048d8292397fa03888b071c5a01"
+      "sha256": "8ae128567beabf5bc9f65ba8737e99753c6b99714f540a8c9ad0aee096569c17"
     },
     {
       "path": "social.png",

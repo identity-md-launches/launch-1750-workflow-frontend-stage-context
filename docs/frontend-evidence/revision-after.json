@@ -1,0 +1,193 @@
+{
+  "mode": "regression after repair",
+  "startedAt": "2026-10-14T15:59:28.399Z",
+  "manifestSha256": "8a59cf07c0f59fca63d34549ff75eafcee368c3ad51c81f6d0a850276dffe199",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "testMode": "Mocked EIP-6963 wallet and RPC; no real signatures or broadcasts",
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "156.0.8078.4"
+    },
+    {
+      "name": "webkit",
+      "version": "27.2"
+    }
+  ],
+  "checks": [
+    {
+      "name": "chromium: authorized wallet reload /",
+      "passed": true,
+      "observed": {
+        "errors": [],
+        "bodyTextLength": 841,
+        "rootChildren": 4,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "chromium: authorized wallet reload /create",
+      "passed": true,
+      "observed": {
+        "errors": [],
+        "bodyTextLength": 833,
+        "rootChildren": 4,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "chromium: authorized wallet reload /collection/0x1234567890abcdef1234567890abcdef12345678",
+      "passed": true,
+      "observed": {
+        "errors": [],
+        "bodyTextLength": 1767,
+        "rootChildren": 4,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "chromium: authorized wallet reload /tokens",
+      "passed": true,
+      "observed": {
+        "errors": [],
+        "bodyTextLength": 313,
+        "rootChildren": 4,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "chromium: authorized wallet reload /trade",
+      "passed": true,
+      "observed": {
+        "errors": [],
+        "bodyTextLength": 662,
+        "rootChildren": 4,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "chromium: create receipt check never resubmits the form",
+      "passed": true,
+      "observed": {
+        "buttonType": "button",
+        "walletRequests": [
+          {
+            "functionName": "createCollection",
+            "value": "0x71afd498d0000"
+          }
+        ],
+        "minted": "0",
+        "errors": []
+      }
+    },
+    {
+      "name": "chromium: mint receipt check never resubmits the form",
+      "passed": true,
+      "observed": {
+        "buttonType": "button",
+        "walletRequests": [
+          {
+            "functionName": "mint",
+            "value": "0x5543df729c000"
+          }
+        ],
+        "minted": "1",
+        "errors": []
+      }
+    },
+    {
+      "name": "webkit: authorized wallet reload /",
+      "passed": true,
+      "observed": {
+        "errors": [],
+        "bodyTextLength": 841,
+        "rootChildren": 4,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "webkit: authorized wallet reload /create",
+      "passed": true,
+      "observed": {
+        "errors": [],
+        "bodyTextLength": 836,
+        "rootChildren": 4,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "webkit: authorized wallet reload /collection/0x1234567890abcdef1234567890abcdef12345678",
+      "passed": true,
+      "observed": {
+        "errors": [],
+        "bodyTextLength": 1772,
+        "rootChildren": 4,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "webkit: authorized wallet reload /tokens",
+      "passed": true,
+      "observed": {
+        "errors": [],
+        "bodyTextLength": 479,
+        "rootChildren": 4,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "webkit: authorized wallet reload /trade",
+      "passed": true,
+      "observed": {
+        "errors": [],
+        "bodyTextLength": 662,
+        "rootChildren": 4,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "webkit: create receipt check never resubmits the form",
+      "passed": true,
+      "observed": {
+        "buttonType": "button",
+        "walletRequests": [
+          {
+            "functionName": "createCollection",
+            "value": "0x71afd498d0000"
+          }
+        ],
+        "minted": "0",
+        "errors": []
+      }
+    },
+    {
+      "name": "webkit: mint receipt check never resubmits the form",
+      "passed": true,
+      "observed": {
+        "buttonType": "button",
+        "walletRequests": [
+          {
+            "functionName": "mint",
+            "value": "0x5543df729c000"
+          }
+        ],
+        "minted": "1",
+        "errors": []
+      }
+    }
+  ],
+  "finishedAt": "2026-10-14T15:59:56.319Z"
+}

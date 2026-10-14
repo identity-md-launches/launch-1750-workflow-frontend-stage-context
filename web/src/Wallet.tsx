@@ -19,7 +19,7 @@ export async function switchNetwork(provider: EIP1193Provider, chainId: number, 
 
 export function Wallet() {
   const runtime = useRuntime();
-  const { address, chainId, isConnected, connector } = useConnection();
+  const { address, chainId, isConnected, connector, status } = useConnection();
   const { connectors, mutateAsync: connect, isPending, variables } = useConnect();
   const { mutate: disconnect } = useDisconnect();
   const [open, setOpen] = useState(false); const [error, setError] = useState(''); const [switching, setSwitching] = useState(false);
@@ -28,10 +28,20 @@ export function Wallet() {
   const wrong = isConnected && chainId !== runtime.chain.id;
   useEffect(() => {
     let active = true;
-    if (isConnected && connector && !wrong) void connector.getProvider().then(p => { if (active) runtime.setWalletProvider(p as EIP1193Provider); });
-    else runtime.setWalletProvider();
+    runtime.setWalletProvider();
+    // isConnected can be true while Wagmi restores a serialized connector.
+    if (status === 'connected' && typeof connector?.getProvider === 'function' && !wrong) {
+      void (async () => {
+        try {
+          const provider = await connector.getProvider();
+          if (active) runtime.setWalletProvider(provider as EIP1193Provider);
+        } catch {
+          if (active) setError('Could not access your wallet. Disconnect and reconnect to try again.');
+        }
+      })();
+    }
     return () => { active = false; runtime.setWalletProvider(); };
-  }, [isConnected, connector, wrong, runtime]);
+  }, [status, connector, wrong, runtime]);
   const changeChain = async (provider?: EIP1193Provider) => {
     setSwitching(true); setError('');
     try { await switchNetwork(provider ?? await connector!.getProvider() as EIP1193Provider, runtime.chain.id, runtime.deployment.walletAddChain); }

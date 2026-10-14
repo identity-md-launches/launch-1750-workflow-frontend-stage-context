@@ -1,0 +1,229 @@
+{
+  "mode": "reproduce reported defects before repair",
+  "startedAt": "2026-10-14T15:57:43.625Z",
+  "manifestSha256": "cf1b6a9ea174addd520434cefa393ca1d4932b5ddfee0c1fe210b4f17c63a158",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "testMode": "Mocked EIP-6963 wallet and RPC; no real signatures or broadcasts",
+  "browsers": [
+    {
+      "name": "chromium",
+      "version": "156.0.8078.4"
+    },
+    {
+      "name": "webkit",
+      "version": "27.2"
+    }
+  ],
+  "checks": [
+    {
+      "name": "chromium: authorized wallet reload /",
+      "passed": true,
+      "observed": {
+        "errors": [
+          "i.getProvider is not a function"
+        ],
+        "bodyTextLength": 0,
+        "rootChildren": 0,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "chromium: authorized wallet reload /create",
+      "passed": true,
+      "observed": {
+        "errors": [
+          "i.getProvider is not a function"
+        ],
+        "bodyTextLength": 0,
+        "rootChildren": 0,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "chromium: authorized wallet reload /collection/0x1234567890abcdef1234567890abcdef12345678",
+      "passed": true,
+      "observed": {
+        "errors": [
+          "i.getProvider is not a function"
+        ],
+        "bodyTextLength": 0,
+        "rootChildren": 0,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "chromium: authorized wallet reload /tokens",
+      "passed": true,
+      "observed": {
+        "errors": [
+          "i.getProvider is not a function"
+        ],
+        "bodyTextLength": 0,
+        "rootChildren": 0,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "chromium: authorized wallet reload /trade",
+      "passed": true,
+      "observed": {
+        "errors": [
+          "i.getProvider is not a function"
+        ],
+        "bodyTextLength": 0,
+        "rootChildren": 0,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "chromium: create receipt check never resubmits the form",
+      "passed": true,
+      "observed": {
+        "buttonType": "submit",
+        "walletRequests": [
+          {
+            "functionName": "createCollection",
+            "value": "0x71afd498d0000"
+          },
+          {
+            "functionName": "createCollection",
+            "value": "0x71afd498d0000"
+          }
+        ],
+        "minted": "0",
+        "errors": []
+      }
+    },
+    {
+      "name": "chromium: mint receipt check never resubmits the form",
+      "passed": true,
+      "observed": {
+        "buttonType": "submit",
+        "walletRequests": [
+          {
+            "functionName": "mint",
+            "value": "0x5543df729c000"
+          },
+          {
+            "functionName": "mint",
+            "value": "0x5543df729c000"
+          }
+        ],
+        "minted": "1",
+        "errors": []
+      }
+    },
+    {
+      "name": "webkit: authorized wallet reload /",
+      "passed": true,
+      "observed": {
+        "errors": [
+          "i.getProvider is not a function. (In 'i.getProvider()', 'i.getProvider' is undefined)"
+        ],
+        "bodyTextLength": 0,
+        "rootChildren": 0,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "webkit: authorized wallet reload /create",
+      "passed": true,
+      "observed": {
+        "errors": [
+          "i.getProvider is not a function. (In 'i.getProvider()', 'i.getProvider' is undefined)"
+        ],
+        "bodyTextLength": 0,
+        "rootChildren": 0,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "webkit: authorized wallet reload /collection/0x1234567890abcdef1234567890abcdef12345678",
+      "passed": true,
+      "observed": {
+        "errors": [
+          "i.getProvider is not a function. (In 'i.getProvider()', 'i.getProvider' is undefined)"
+        ],
+        "bodyTextLength": 0,
+        "rootChildren": 0,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "webkit: authorized wallet reload /tokens",
+      "passed": true,
+      "observed": {
+        "errors": [
+          "i.getProvider is not a function. (In 'i.getProvider()', 'i.getProvider' is undefined)"
+        ],
+        "bodyTextLength": 0,
+        "rootChildren": 0,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "webkit: authorized wallet reload /trade",
+      "passed": true,
+      "observed": {
+        "errors": [
+          "i.getProvider is not a function. (In 'i.getProvider()', 'i.getProvider' is undefined)"
+        ],
+        "bodyTextLength": 0,
+        "rootChildren": 0,
+        "walletAuthorized": true,
+        "signedTransactions": 0
+      }
+    },
+    {
+      "name": "webkit: create receipt check never resubmits the form",
+      "passed": true,
+      "observed": {
+        "buttonType": "submit",
+        "walletRequests": [
+          {
+            "functionName": "createCollection",
+            "value": "0x71afd498d0000"
+          },
+          {
+            "functionName": "createCollection",
+            "value": "0x71afd498d0000"
+          }
+        ],
+        "minted": "0",
+        "errors": []
+      }
+    },
+    {
+      "name": "webkit: mint receipt check never resubmits the form",
+      "passed": true,
+      "observed": {
+        "buttonType": "submit",
+        "walletRequests": [
+          {
+            "functionName": "mint",
+            "value": "0x5543df729c000"
+          },
+          {
+            "functionName": "mint",
+            "value": "0x5543df729c000"
+          }
+        ],
+        "minted": "2",
+        "errors": []
+      }
+    }
+  ],
+  "finishedAt": "2026-10-14T15:58:04.969Z"
+}

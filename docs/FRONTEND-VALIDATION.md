@@ -9,20 +9,38 @@ Worker validation on **2026-10-14**. Status: **Complete for the assigned fronten
 | Build and strict TypeScript | Passed |
 | Pinned implementation ABI hashes | 3 / 3 match |
 | Manifest/network/pool binding and asset SHA-256 | Passed |
-| Unit/integrity/encoding tests | 4 / 4 passed |
+| Unit/integrity/encoding/wallet-effect tests | 8 / 8 passed |
 | Production-export browser interaction groups | 32 / 32 passed: 16 each in Chromium and WebKit |
+| Revision browser regressions | 14 / 14 passed: five reload routes and two receipt checks in each engine |
 | Accessibility scans on populated collection state | 0 violations, 28 rules passed in each engine |
 | taste@1 design probe | 16 / 16 checks passed |
 | Product and main action at 390 × 844 | Yes: home creation action and collection mint action |
 | Horizontal overflow | None at 320, 390, 768 or 1440 in tested states; 200% text enlargement also checked |
 | Runtime script errors in interaction suite | 0 |
 | Real transactions broadcast by worker | 0 |
-| Export | 15 declared assets; 873,771 asset bytes + 4,621 manifest bytes = **878,392 bytes** |
-| Complete Git bundle size check | 1,696,218 bytes measured; conservative final bound **1,761,754 bytes**, below 8,388,608 bytes |
+| Export | 15 declared assets; 873,945 asset bytes + 4,621 manifest bytes = **878,566 bytes** |
+| Complete Git bundle size check | See `frontend-evidence/submission-size.json` for the revision measurement against the 8,388,608-byte limit |
 
 The supplied deployment is pinned to source `586668b09578a70919bf1f57fe7224dcfa9bee69`, launch `5a236d96-2876-4ac5-b874-ee97565f17f6`, chain 11155111, attestation `9a2610c0dbbad95f0ec65f4f9db3743701a084d131b369d4d44efc9a1f929e1a`. The contracts and root build files were preserved.
 
 The assignment asks for root `DESIGN.md` but its overriding path budget permits only `web/**`, `dist/**`, `docs/**` and `web/.gitignore`. The implemented design document is therefore **`docs/DESIGN.md`**. No root file was created to evade that restriction. The workspace also marks root `.git` metadata read-only; the worker prepares source/export/evidence for the submission service rather than claiming an in-place Git commit it cannot create.
+
+## Revision findings and recheck
+
+Both reviewer reports were reproduced against the untouched accepted export before changing application source. `web/tests/revision.mjs --baseline` served `dist/` under `/preview/`, used the existing `makeMock`/`attachMock` EIP-6963 fixture, and preserved localStorage across reloads. Browsers were Chromium **156.0.8078.4** and WebKit **27.2**, at **390 × 844**. The baseline report's `passed` means the reported defect was reproduced, not that the application was correct.
+
+| Finding | Before repair | Change and final result |
+| --- | --- | --- |
+| `d79d0ebdef47e71ccdfdd08cd7d2b074bb918efd2d316cdc62247e51747d4dff` | All ten reloads (home, create, collection, tokens, trade in both engines) threw `getProvider is not a function`; body text length and root child count became zero. | `web/src/Wallet.tsx:29`: clear the fallback before resolving; require `status === 'connected'` and callable `getProvider`; catch failures and ignore completions after cleanup. All ten final reloads reconnect, retain the page and emit zero page errors or transaction requests. |
+| `026116ac180a6c2c64263d2528ea45d21302b8569412f6ed87e4088ea31a068c` | All four form cases sent two requests after one paid submit and one receipt check: creation at 0.002 ETH each, mint at 0.0015 ETH each. | `web/src/transactions.tsx:73`: set `type="button"` on the shared receipt-check control. After a simulated 121-second timeout, checking confirmation now leaves exactly one request in all four cases; mint count remains one. |
+
+Evidence: `frontend-evidence/revision-before.json` and `revision-after.json` include the tested manifest SHA-256, versions, timestamps, per-route DOM observations and paid-request counts/values. The final run passed **14/14** cases. `chromium-reload-390.png` and `webkit-reload-390.png` show the connected home after reload. No real signatures or transactions were sent.
+
+Four new unit tests execute the actual wallet effect with controlled hook inputs, covering persisted connectors, reconnecting/connecting/disconnected/wrong-chain states, a valid connected provider, synchronous throws, rejected promises, and late resolution/rejection after cleanup. All eight unit tests passed. These are lifecycle tests, not simulated proof of a physical extension's behavior.
+
+The revision reran build (including strict typecheck and ABI export), manifest verification, the original **32/32** browser interaction groups, axe scans (zero violations), and the pinned **16/16** design probe. All five reconnected routes also passed overflow checks at 320 and 390. The 390 home and collection screenshots were visually inspected: wallet, product, creation/mint actions and exact fee remain visible. The desktop home was also inspected. The six-domain review below still applies; this revision changed only wallet lifecycle handling and receipt-button semantics. No styling, fees, contract configuration, dependency versions or unrelated application flows were changed. The provider error uses the existing persistent wallet alert and gives a concrete disconnect/reconnect recovery action.
+
+The root `.imd-responses.json` is the revision brief's explicitly requested response-file exception to the normal write budget. The existing `docs/DESIGN.md` location remains unchanged.
 
 ## Scope and consequential choices
 
@@ -45,17 +63,17 @@ npm run test:browser
 node scripts/check-live.mjs
 ```
 
-`npm run build` itself invokes typecheck, Vite and the manifest exporter/validator. The development server was also smoke-tested for HTML, `imd-deployment.json` and its referenced ABI under Vite. The production test server was served beneath `/preview/`, verifying relative resources and hash navigation.
+`npm run build` itself invokes typecheck, Vite and the manifest exporter/validator. The revision also ran `node tests/revision.mjs`, after first running its `--baseline` mode on the original export. The development smoke check and `check-live.mjs` result below are retained from the initial implementation; those two checks were not rerun for this revision. The production test server was served beneath `/preview/`, verifying relative resources and hash navigation.
 
-The worker installed Playwright browsers under `/tmp/loom-browsers`. Chromium was **156.0.8078.4**, WebKit **27.2**. This restricted machine lacked WebKit’s shared libraries and software EGL vendor setup. The libraries were downloaded/extracted under `/tmp/loom-webkit-deps`; the temporary WebKit wrapper was pointed at those libraries. Software Mesa/EGL and the headless runner’s sandbox override were used. No system or repository build configuration was changed. The final interaction invocation was:
+For the revision, the worker installed Playwright browsers under `/tmp/loom-revision-browsers`. Chromium was **156.0.8078.4**, WebKit **27.2**. This restricted machine lacked WebKit’s shared libraries and software EGL vendor setup. Existing extracted libraries under `/tmp/quantum-review/sysroot` supplied them. The temporary WebKit launcher was adjusted to retain `LD_LIBRARY_PATH`; Mesa/EGL paths were supplied as below. Host dependency preflight was skipped, then both browser engines were actually launched and exercised. No system or repository build configuration was changed. Both `npm run test:browser` and `node tests/revision.mjs` ran with:
 
 ```sh
 PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1 \
-PLAYWRIGHT_BROWSERS_PATH=/tmp/loom-browsers \
-WEBKIT_DISABLE_SANDBOX_THIS_IS_DANGEROUS=1 \
-__EGL_VENDOR_LIBRARY_FILENAMES=/tmp/loom-webkit-deps/root/usr/share/glvnd/egl_vendor.d/50_mesa.json \
-LIBGL_DRIVERS_PATH=/tmp/loom-webkit-deps/root/usr/lib/x86_64-linux-gnu/dri \
-LIBGL_ALWAYS_SOFTWARE=1 npm run test:browser
+PLAYWRIGHT_BROWSERS_PATH=/tmp/loom-revision-browsers \
+LD_LIBRARY_PATH=/tmp/quantum-review/sysroot/usr/lib/x86_64-linux-gnu \
+__EGL_VENDOR_LIBRARY_DIRS=/tmp/quantum-review/sysroot/usr/share/glvnd/egl_vendor.d \
+LIBGL_DRIVERS_PATH=/tmp/quantum-review/sysroot/usr/lib/x86_64-linux-gnu/dri \
+npm run test:browser
 ```
 
 These flags only describe this isolated browser-test environment; none is needed by or bundled into the website.
@@ -63,12 +81,12 @@ These flags only describe this isolated browser-test environment; none is needed
 The final design probe ran from repository root with exit code 0:
 
 ```sh
-PLAYWRIGHT_BROWSERS_PATH=/tmp/loom-browsers \
+PLAYWRIGHT_BROWSERS_PATH=/tmp/loom-revision-browsers \
 IMD_PLAYWRIGHT="$PWD/web/node_modules/playwright/index.mjs" \
 node .imd/reads/skills/design-critic/scripts/taste.mjs --out test/scratch/taste
 ```
 
-Its JSON and selected screenshots were copied to the permitted evidence directory. All 16 final checks passed. The first phone screen has 37 words of prose; five sizes are rendered at each inspected home width, two font families and three weights. The probe found no clipping, text overlap, horizontal overflow, missing local resources or script errors. Two controls are narrower than the 44px comfort target but pass the 24px/spacing criterion; their height remains 44px.
+Its JSON and selected screenshots were copied to the permitted evidence directory. All 16 final checks passed. The first phone screen has 37 words of prose; five sizes are rendered at each inspected home width, two font families and three weights. The probe found no clipping, text overlap, horizontal overflow, missing local resources or script errors. One control is narrower than the 44px comfort target but passes the 24px/spacing criterion; its height remains 44px.
 
 Evidence files:
 
@@ -82,7 +100,7 @@ Evidence files:
 - `frontend-evidence/live-read.json`: actual read-only configured-RPC results.
 - `frontend-evidence/submission-size.json`: final allowed-path and submission-bundle size check.
 
-The provided browser tool was also used to navigate the actual export, view mobile/desktop screenshots, inspect resources and overflow, check keyboard focus and recheck enlarged text. Its final console inspection reported zero errors and zero warnings. Generated tool scratch output was moved into `test/scratch/`; none is part of the delivery.
+During the initial implementation, the provided browser tool was also used to navigate the actual export, view mobile/desktop screenshots, inspect resources and overflow, check keyboard focus and recheck enlarged text. Its console inspection reported zero errors and zero warnings. This revision used Playwright directly and inspected the resulting screenshots. Generated tool scratch output stays in `test/scratch/`; none is part of the delivery.
 
 ## Interaction coverage
 
@@ -105,7 +123,7 @@ Both browser engines ran the same 16 groups, using real exported JavaScript and 
 15. RPC failure and retry, wallet still available during reads, missing code disables writes, zero-active-liquidity disables quotes.
 16. A modified factory ABI fails its hash check before any wallet/contract action is offered.
 
-The four unit tests independently decode router input parameters (including the extended tuple), validate integer parsing and unsafe URI/address handling, and verify the complete final manifest/asset inventory.
+The original four unit tests independently decode router input parameters (including the extended tuple), validate integer parsing and unsafe URI/address handling, and verify the complete final manifest/asset inventory. Four additional lifecycle tests cover the revised wallet effect as described above.
 
 ## Live read observations
 

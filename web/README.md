@@ -45,6 +45,8 @@ At runtime, Loom checks ABI hashes, RPC chain ID, nonempty code for all three de
 - A hash with uncertain confirmation keeps the write lock and offers “Check confirmation.” Explorer links remain visible. Cancellation/replacement is not reported as successful completion of the original action. Activity is in memory for the current tab; after a reload, consult the wallet/explorer before resubmitting an unconfirmed transaction.
 - Public RPCs are tried in the supplied order, with a connected provider fallback only on the correct chain. Factory/collection/balance reads refresh every 20 seconds, allowances every 15 seconds, and relevant queries refresh after confirmed writes. These read-only polling timers do not submit transactions.
 
+On reload, the wallet fallback waits for Wagmi's `connected` status and a resolved connector. Reconnecting, disconnected and wrong-chain states clear the fallback; provider failures stay in the wallet error UI. “Check confirmation” is a read-only button, including when the transaction status appears inside a paid form.
+
 No private credentials or signing keys are required or included. Wallets perform all real signing. There is no WalletConnect relay integration and no project ID.
 
 ## Collection behavior
@@ -73,10 +75,13 @@ The worker’s live read found **zero active pool liquidity**, so the current li
 npm test
 npx playwright install chromium webkit
 npm run test:browser
+node tests/revision.mjs
 node scripts/check-live.mjs
 ```
 
 The browser script owns a temporary HTTP preview under `/preview/`, mocks only wallet/RPC operations, and tests the **production export** in Chromium and WebKit. It writes JSON reports and screenshots to `docs/frontend-evidence/`. Test-only fixtures are under `web/tests/` and are not in the Vite import graph or static export. No mock keys or real transaction broadcasts are used. Chromium may use `CHROMIUM_PATH`; Playwright honors `PLAYWRIGHT_BROWSERS_PATH` for installed browsers. A normal Linux runner needs Playwright’s browser system dependencies.
+
+`tests/revision.mjs` checks persisted-wallet reloads on all five routes and receipt-timeout recovery for creation/minting in both browsers. It advances Playwright's clock by 121 seconds without waiting in real time and asserts that receipt checking sends no second transaction. Its `--baseline` mode expects the reported defects and is only for the original, unrepaired export; the saved before/after reports identify the manifest bytes tested. `npm test` also exercises the wallet fallback effect with unresolved connectors, provider failures and late completions.
 
 The pinned design probe (available only during the worker assignment) runs from repository root:
 
